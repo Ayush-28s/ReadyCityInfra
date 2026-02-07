@@ -53,7 +53,7 @@ async function fetchProperties() {
     const container = document.getElementById('property-container');
 
     try {
-        const response = await fetch('/api/properties');
+        const response = await fetch('/api/index');
         const data = await response.json();
 
         container.innerHTML = '';
