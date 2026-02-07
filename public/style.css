@@ -1,0 +1,67 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Tiro+Devanagari+Hindi&display=swap');
+
+/* GLOBAL SETTINGS */
+:root {
+    --brand-blue: #007cc3;       /* The primary blue from your logo */
+    --brand-cyan: #00BFFF;       /* The cyan accent */
+    --brand-dark: #004a7c;       /* Darker blue for contrast */
+    --text-dark: #1e293b;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fafc;
+    overflow-x: hidden;
+}
+
+/* HINDI FONT CLASS */
+.font-hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+}
+
+/* CUSTOM ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* SWIPER CAROUSEL CUSTOMIZATION */
+.swiper-slide {
+    height: 85vh; /* Full screen height minus navbar */
+    position: relative;
+}
+
+.swiper-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+     /* Cinematic Darken */
+}
+
+/* BRANDING GRADIENT TEXT */
+.brand-text-gradient {
+    background: linear-gradient(90deg, var(--brand-blue), var(--brand-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* CARD HOVER EFFECTS */
+.property-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.property-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

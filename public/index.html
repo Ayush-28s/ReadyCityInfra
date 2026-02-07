@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready City Infra Pvt. Ltd. | Premium Real Estate</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#007cc3', // Primary Blue
+                            light: '#00BFFF',   // Cyan/Highlight
+                            dark: '#004a7c',    // Dark Navy
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased bg-gray-50">
+
+    <!-- TOP BAR (Contact Info) -->
+    <div class="bg-slate-900 text-white text-xs py-2 hidden md:block border-b border-gray-800">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex gap-6">
+                <span><i class="fas fa-phone-alt text-brand-light mr-2"></i>+91 9651227779</span>
+                <span><i class="fas fa-envelope text-brand-light mr-2"></i>readycityinfra@gmail.com</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-brand-light transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-brand-light transition"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR (Sticky & Glassy) -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                
+                <!-- LOGO & BRANDING -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <!-- Icon -->
+                    <div class="relative w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full group-hover:bg-blue-100 transition">
+                        <i class="fas fa-city text-2xl text-brand"></i>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    
+                    <!-- Text Stack -->
+                    <div class="flex flex-col">
+                        <h1 class="text-xl md:text-2xl font-[800] text-brand tracking-tighter leading-none">
+                            READY CITY INFRA
+                        </h1>
+                        <div class="flex items-center justify-between w-full">
+                            <span class="text-[0.6rem] font-bold text-gray-500 uppercase tracking-widest">
+                                PRIVATE LIMITED
+                            </span>
+                        </div>
+                        <span class="text-brand font-hindi text-sm font-medium mt-[2px]">
+                            हमारा सपना आपका घर हो अपना
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8 font-medium text-gray-700">
+                    <a href="#" class="hover:text-brand transition">Home</a>
+                    <a href="#about" class="hover:text-brand transition">About Us</a>
+                    <a href="#projects" class="hover:text-brand transition">Projects</a>
+                    <a href="#gallery" class="hover:text-brand transition">Gallery</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-brand text-white rounded-lg shadow-lg hover:bg-brand-dark hover:-translate-y-0.5 transition-all duration-300">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-2xl text-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO CAROUSEL -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            
+            <!-- Slide 1: Dream Home -->
+            <div class="swiper-slide">
+                <!-- If images/c1.png doesn't exist, it loads the Unsplash image -->
+                <img src="images/c1.jpg" 
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80'"
+                     class="w-full h-full object-cover" 
+                     alt="Dream Home">
+                     
+                <div class="absolute inset-0 z-10 flex items-center justify-center bg-black/10">
+                    <div class="text-center text-white px-4 animate-fade-up">
+                        <span class="bg-brand/90 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-4 inline-block backdrop-blur-sm border border-white/20">
+                            Approved Plots
+                        </span>
+                        <h2 class="text-4xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
+                            Build Your <span class="text-brand-light">Dream Home</span>
+                        </h2>
+                        <p class="text-xl md:text-3xl font-hindi text-gray-100 drop-shadow-lg max-w-2xl mx-auto border-l-4 border-brand pl-4 bg-black/20 p-2 rounded">
+                            सबसे भरोसेमंद रियल एस्टेट कंपनी, अब प्रयागराज में
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Investment -->
+            <div class="swiper-slide">
+                <img src="images/c3.jpg" 
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80'"
+                     class="w-full h-full object-cover" 
+                     alt="Investment">
+                     
+                <div class="absolute inset-0 z-10 flex items-center justify-center bg-black/10">
+                    <div class="text-center text-white px-4 animate-fade-up">
+                        <h2 class="text-4xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
+                            Secure <span class="text-brand-light">Investment</span>
+                        </h2>
+                        <p class="text-xl md:text-2xl">High Returns • Prime Locations • Clear Titles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Corporate Infra (NEW ADDITION) -->
+            <div class="swiper-slide">
+                <img src="images/c2.jpg" 
+                     onerror="this.onerror=null; this.src='images/c2'"
+                     class="w-full h-full object-cover" 
+                     alt="Corporate Infra">
+                     
+                <div class="absolute inset-0 z-10 flex items-center justify-center bg-brand-dark/10">
+                    <div class="text-center text-white px-4 animate-fade-up">
+                        <h2 class="text-4xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
+                            Ready City <span class="text-brand-light">Infra Pvt. Ltd.</span>
+                        </h2>
+                        <p class="text-xl md:text-2xl font-light tracking-wide">
+                            Residential • Commercial • Industrial
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <div class="swiper-button-next text-white hover:text-brand-light transition"></div>
+        <div class="swiper-button-prev text-white hover:text-brand-light transition"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- SEARCH BAR (Floating Glassmorphism) -->
+    <div class="relative -mt-24 z-20 container mx-auto px-4 mb-20">
+        <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8 flex flex-col md:flex-row gap-4 items-center border border-gray-100 max-w-4xl mx-auto">
+            <div class="w-full">
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Location</label>
+                <div class="flex items-center border-b-2 border-gray-200 py-2 focus-within:border-brand transition">
+                    <i class="fas fa-map-marker-alt text-brand mr-3"></i>
+                    <input type="text" placeholder="Gauhaniya, Naini..." class="w-full outline-none text-gray-700 font-semibold bg-transparent">
+                </div>
+            </div>
+            <div class="w-full">
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Property Type</label>
+                <div class="flex items-center border-b-2 border-gray-200 py-2 focus-within:border-brand transition">
+                    <i class="fas fa-home text-brand mr-3"></i>
+                    <select class="w-full outline-none text-gray-700 font-semibold bg-transparent cursor-pointer">
+                        <option>All Types</option>
+                        <option>Residential Plot</option>
+                        <option>Commercial Land</option>
+                    </select>
+                </div>
+            </div>
+            <button class="w-full md:w-auto bg-brand hover:bg-brand-dark text-white px-10 py-4 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 whitespace-nowrap">
+                Search Now
+            </button>
+        </div>
+    </div>
+
+    <!-- PROJECTS LIST -->
+    <section id="projects" class="py-16 container mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="text-brand font-bold tracking-widest uppercase text-sm">Our Portfolio</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">Latest <span class="text-brand">Projects</span></h2>
+            <div class="h-1 w-24 bg-brand mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Javascript fills this -->
+        <div id="property-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Loading Spinner -->
+            <div class="col-span-full flex justify-center py-20">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand"></div>
+            </div>
+        </div>
+    </section>
+
+        <!-- ==============================================
+         TESTIMONIALS SECTION (Modern Upgrade)
+    =============================================== -->
+    <section class="relative py-20 bg-gradient-to-br from-brand-dark to-brand overflow-hidden">
+        <!-- Background Pattern (Subtle) -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <i class="fas fa-quote-left text-4xl text-brand-light opacity-50 mb-4"></i>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-2">Client Stories</h2>
+                <div class="h-1 w-20 bg-white mx-auto rounded-full opacity-50"></div>
+                <p class="text-blue-100 mt-4 max-w-2xl mx-auto">See why 1000+ families trusted Ready City Infra to find their dream property.</p>
+            </div>
+
+            <!-- Testimonial Swiper -->
+            <div class="swiper testimonialSwiper pb-12">
+                <div class="swiper-wrapper">
+                    
+                    <!-- Review 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl text-center max-w-3xl mx-auto shadow-xl">
+                            <p class="text-lg md:text-xl text-white italic mb-6 leading-relaxed">
+                                "Ready City Infra made buying our plot in Gauhaniya so easy. The papers were clear, and the team helped us with the registry process. Truly professional!"
+                            </p>
+                            <div class="flex items-center justify-center gap-4">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-14 h-14 rounded-full border-2 border-brand-light">
+                                <div class="text-left">
+                                    <h4 class="text-white font-bold">Rajesh Kumar</h4>
+                                    <p class="text-brand-light text-sm">Plot Owner, Gauhaniya</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl text-center max-w-3xl mx-auto shadow-xl">
+                            <p class="text-lg md:text-xl text-white italic mb-6 leading-relaxed">
+                                "I was looking for a secure investment in Prayagraj. Their team guided me to Shanker Garh, and the appreciation value has been fantastic. Highly recommended."
+                            </p>
+                            <div class="flex items-center justify-center gap-4">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-14 h-14 rounded-full border-2 border-brand-light">
+                                <div class="text-left">
+                                    <h4 class="text-white font-bold">Sneha Gupta</h4>
+                                    <p class="text-brand-light text-sm">Investor, Mumbai</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl text-center max-w-3xl mx-auto shadow-xl">
+                            <p class="text-lg md:text-xl text-white italic mb-6 leading-relaxed">
+                                "The best part about Ready City is their transparency. No hidden charges, and they delivered exactly what they promised."
+                            </p>
+                            <div class="flex items-center justify-center gap-4">
+                                <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client" class="w-14 h-14 rounded-full border-2 border-brand-light">
+                                <div class="text-left">
+                                    <h4 class="text-white font-bold">Amit Singh</h4>
+                                    <p class="text-brand-light text-sm">Home Buyer, Naini</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+         GALLERY SECTION (Grid Layout)
+    =============================================== -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-brand font-bold tracking-widest uppercase text-sm">Visual Tour</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Our <span class="text-brand">Gallery</span></h2>
+                </div>
+                <a href="https://wa.me/919651227779" class="hidden md:inline-block text-brand font-bold hover:underline">
+                    Request Site Photos <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 h-[600px] md:h-[500px]">
+                <!-- Large Image (Left) -->
+                <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Site View">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+
+                <!-- Small Image 1 -->
+                <div class="relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1599809275372-b8812195756e?w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Construction">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+
+                <!-- Small Image 2 -->
+                <div class="relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Plot View">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+
+                <!-- Wide Image (Bottom Right) -->
+                <div class="col-span-2 relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Office">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+         CTA BANNER (Call to Action)
+    =============================================== -->
+    <section class="bg-brand py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Ready to find your new home?</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <!-- TELEPHONE LINK (Click to Call) -->
+                <a href="tel:+919651227779" class="bg-white text-brand font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt"></i> +91 9651227779
+                </a>
+                
+                <!-- EMAIL LINK (Click to Email) -->
+                <a href="mailto:readycityinfra@gmail.com" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-brand transition flex items-center justify-center gap-2">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+        <footer id="contact" class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- About -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Ready City Infra</h3>
+                    <p class="leading-relaxed mb-6">
+                        We provide the best real estate deals in Prayagraj. 
+                        Trusted by over 1000+ families for their dream homes.
+                    </p>
+                    <p class="font-hindi text-brand text-lg">हमारा सपना आपका घर हो अपना</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-brand transition">Home</a></li>
+                        <li><a href="#projects" class="hover:text-brand transition">Properties</a></li>
+                        <li><a href="#gallery" class="hover:text-brand transition">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-brand transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info (WITH REDIRECTS) -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Contact Info</h4>
+                    
+                    <!-- Address (Opens Google Maps) -->
+                    <a href="https://goo.gl/maps/YourMapLink" target="_blank" class="flex items-start mb-4 hover:text-white transition">
+                        <i class="fas fa-map-marker-alt text-brand mr-3 mt-1"></i> 
+                        <span>47B/85/2 Chintamani Road,<br>Near George Town Thana,<br>Prayagraj, UP - 211002</span>
+                    </a>
+
+                    <!-- Phone (Opens Dialer) -->
+                    <a href="tel:+919651227779" class="flex items-center mb-4 hover:text-white transition">
+                        <i class="fas fa-phone-alt text-brand mr-3"></i> 
+                        <span class="font-bold text-lg">+91 9651227779</span>
+                    </a>
+
+                    <!-- Email (Opens Mail App) -->
+                    <a href="mailto:readycityinfra@gmail.com" class="flex items-center hover:text-white transition">
+                        <i class="fas fa-envelope text-brand mr-3"></i> 
+                        <span>readycityinfra@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-black py-6 text-center text-sm text-gray-500">
+            &copy; 2024 Ready City Infra Pvt. Ltd. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919651227779" class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-4xl shadow-2xl hover:bg-green-600 hover:-translate-y-2 transition-all duration-300 z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
