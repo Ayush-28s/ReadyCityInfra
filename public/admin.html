@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - Ready City Infra</title>
+    <!-- Use your local Tailwind build -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#007cc3', // Primary Blue
+                            light: '#00BFFF',   // Cyan/Highlight
+                            dark: '#004a7c',    // Dark Navy
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased h-screen flex overflow-hidden">
+
+    <!-- 1. SIDEBAR -->
+    <aside class="w-64 bg-[#0f172a] text-white flex-col hidden md:flex transition-all duration-300">
+        <!-- Brand -->
+        <div class="h-20 flex items-center gap-3 px-6 border-b border-gray-800">
+            <div class="w-8 h-8 bg-white rounded-lg p-1"><img src="images/logo.png" class="object-contain w-full h-full"></div>
+            <div>
+                <h2 class="font-bold text-lg tracking-tight">READY CITY</h2>
+                <span class="text-[0.6rem] text-gray-400 uppercase tracking-widest">Admin Console</span>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-brand rounded-xl text-white shadow-lg shadow-brand/20">
+                <i class="fas fa-th-large w-5"></i> Dashboard
+            </a>
+            <p class="text-xs font-bold text-gray-500 uppercase px-4 mt-6 mb-2">Management</p>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-xl transition">
+                <i class="fas fa-building w-5"></i> Properties
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-xl transition">
+                <i class="fas fa-users w-5"></i> Users & Leads
+            </a>
+        </nav>
+
+        <!-- Logout -->
+        <div class="p-4 border-t border-gray-800">
+            <button onclick="logout()" class="flex items-center gap-3 w-full px-4 py-2 text-red-400 hover:bg-red-500/10 rounded-lg transition">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- 2. MAIN CONTENT -->
+    <div class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- Header -->
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 shadow-sm z-10">
+            <h2 class="text-2xl font-bold text-gray-800">Overview</h2>
+            <div class="flex items-center gap-4">
+                <div class="text-right hidden md:block">
+                    <p class="text-sm font-bold text-gray-900" id="adminName">Loading...</p>
+                    <p class="text-xs text-gray-500">Administrator</p>
+                </div>
+                <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white font-bold text-lg">A</div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-8">
+            
+            <!-- STAT CARDS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Properties Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium">Total Properties</p>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-2" id="count-props">...</h3>
+                    </div>
+                    <div class="p-3 bg-blue-50 text-brand rounded-lg"><i class="fas fa-building text-xl"></i></div>
+                </div>
+                
+                <!-- Users Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium">Registered Users</p>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-2" id="count-users">...</h3>
+                    </div>
+                    <div class="p-3 bg-green-50 text-green-600 rounded-lg"><i class="fas fa-users text-xl"></i></div>
+                </div>
+
+                <!-- Revenue Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium">Est. Revenue</p>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-2" id="count-rev">...</h3>
+                    </div>
+                    <div class="p-3 bg-purple-50 text-purple-600 rounded-lg"><i class="fas fa-wallet text-xl"></i></div>
+                </div>
+            </div>
+
+            <!-- TABLES GRID -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Recent Properties Table -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-bold text-gray-800">Recent Properties</h3>
+                        <a href="#" class="text-brand text-sm font-bold hover:underline">View All</a>
+                    </div>
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50 text-gray-500 uppercase text-xs">
+                            <tr>
+                                <th class="px-6 py-3">Title</th>
+                                <th class="px-6 py-3">Price</th>
+                                <th class="px-6 py-3">Location</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100" id="table-props">
+                            <!-- JS will inject rows here -->
+                            <tr><td class="px-6 py-4 text-gray-400">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recent Users Table -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-bold text-gray-800">New Users</h3>
+                        <a href="#" class="text-brand text-sm font-bold hover:underline">View All</a>
+                    </div>
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50 text-gray-500 uppercase text-xs">
+                            <tr>
+                                <th class="px-6 py-3">Name</th>
+                                <th class="px-6 py-3">Phone</th>
+                                <th class="px-6 py-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100" id="table-users">
+                            <!-- JS will inject rows here -->
+                            <tr><td class="px-6 py-4 text-gray-400">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- LOGIC -->
+    <script>
+        // 1. Check Auth (Security)
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            window.location.href = '/login.html'; // Kick them out if not logged in
+        } else {
+            document.getElementById('adminName').innerText = user.name || "Admin";
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = '/login.html';
+        }
+
+        // 2. Fetch Data from TiDB API
+        async function loadData() {
+            try {
+                const response = await fetch('/api/dashboard-data');
+                const data = await response.json();
+
+                // Update Stats
+                document.getElementById('count-props').innerText = data.stats.properties;
+                document.getElementById('count-users').innerText = data.stats.users;
+                document.getElementById('count-rev').innerText = "₹" + data.stats.revenue;
+
+                // Update Properties Table
+                const propTable = document.getElementById('table-props');
+                propTable.innerHTML = data.properties.map(p => `
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-3 font-bold text-gray-800 text-sm">${p.title}</td>
+                        <td class="px-6 py-3 text-brand font-bold text-sm">₹${p.price}</td>
+                        <td class="px-6 py-3 text-gray-500 text-xs">${p.location}</td>
+                    </tr>
+                `).join('');
+
+                // Update Users Table
+                const userTable = document.getElementById('table-users');
+                userTable.innerHTML = data.users.map(u => `
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-3 font-bold text-gray-800 text-sm">${u.full_name}</td>
+                        <td class="px-6 py-3 text-gray-500 text-xs">${u.phone}</td>
+                        <td class="px-6 py-3"><span class="bg-green-100 text-green-600 px-2 py-0.5 rounded text-[10px] font-bold uppercase">Active</span></td>
+                    </tr>
+                `).join('');
+
+            } catch (error) {
+                console.error("Dashboard Error:", error);
+            }
+        }
+
+        // Load data on start
+        loadData();
+    </script>
+</body>
+</html>

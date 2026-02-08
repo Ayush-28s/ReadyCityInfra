@@ -1,44 +1,35 @@
-const express = require('express');
-const mysql = require('mysql2');
-const cors = require('cors');
-require('dotenv').config();
+import mysql from 'mysql2/promise';
 
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-// Create Connection Pool
-const db = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-    database: 'test',
-    port: process.env.DB_PORT || 4000,
-    ssl: { rejectUnauthorized: true }, // Required for TiDB
+// Create the pool OUTSIDE the handler (best practice for Vercel)
+const pool = mysql.createPool({
+    host: process.env.TIDB_HOST,
+    user: process.env.TIDB_USER,
+    password: process.env.TIDB_PASS,
+    database: process.env.TIDB_NAME,
+    port: process.env.TIDB_PORT || 4000, // Changed to 4000
+    ssl: { 
+        minVersion: 'TLSv1.2', 
+        rejectUnauthorized: true 
+    },
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 1, // Lower this for Serverless (Vercel spins up many instances)
+    maxIdle: 1, 
+    idleTimeout: 60000,
     queueLimit: 0
 });
 
-// TEST ROUTE - Prints DB Connection Details (Safely)
-app.get('/api/properties', (req, res) => {
-    const sql = "SELECT * FROM properties ORDER BY id DESC"; 
+export default async function handler(req, res) {
+    // CORS Headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
     
-    db.query(sql, (err, result) => {
-        if (err) {
-            // IF ERROR: Send the exact error message to the browser
-            console.error("Database Error:", err);
-            return res.status(500).json({ 
-                status: "Error",
-                message: err.message, 
-                code: err.code,
-                host: process.env.DB_HOST // Verify if Host is being read
-            });
-        }
-        // IF SUCCESS: Send data
-        res.json(result);
-    });
-});
+    if (req.method === 'OPTIONS') return res.status(200).end();
 
-module.exports = app;
+    try {
+        const [rows] = await pool.query("SELECT * FROM properties WHERE status = 'available' ORDER BY id DESC");
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error("Database Error:", error); // This logs to Vercel Logs
+        res.status(500).json({ error: error.message });
+    }
+}

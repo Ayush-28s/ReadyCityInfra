@@ -25,24 +25,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ---------------------------------------------------------
-    // 2. TESTIMONIAL CAROUSEL (New Section)
+    // 2. TESTIMONIAL CAROUSEL
     // ---------------------------------------------------------
     const testimonialSwiper = new Swiper(".testimonialSwiper", {
         loop: true,
         speed: 800,
+        spaceBetween: 30,
         autoplay: {
-            delay: 4000, // Slightly faster than hero
+            delay: 5000,
             disableOnInteraction: false,
         },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
+        // This connects the custom buttons I added in HTML
+        navigation: {
+            nextEl: ".review-next",
+            prevEl: ".review-prev",
         },
-        slidesPerView: 1, // Show 1 review at a time
-        spaceBetween: 30,
-        grabCursor: true,
+        // Responsive Breakpoints
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2, // Shows 2 cards on tablet/desktop
+            }
+        }
     });
-
     // ---------------------------------------------------------
     // 3. FETCH PROPERTIES FROM DATABASE
     // ---------------------------------------------------------
@@ -53,13 +60,26 @@ async function fetchProperties() {
     const container = document.getElementById('property-container');
 
     try {
-        const response = await fetch('/api/index');
+        // NOTE: In Vercel, api/index.js is served at /api
+        const response = await fetch('/api'); 
+        
+        // Check if the response was successful
+        if (!response.ok) {
+            throw new Error(`Server status: ${response.status}`);
+        }
+
         const data = await response.json();
+
+        // Safety check: Ensure data is actually an array before looping
+        if (!Array.isArray(data)) {
+            console.error("Data received is not an array:", data);
+            throw new Error("Invalid data format received from server");
+        }
 
         container.innerHTML = '';
 
-        if (!data || data.length === 0) {
-            container.innerHTML = '<p class="col-span-full text-center text-gray-500 text-xl">No properties currently listed.</p>';
+        if (data.length === 0) {
+            container.innerHTML = '<p class="...">No properties currently listed.</p>';
             return;
         }
 
@@ -140,3 +160,37 @@ async function fetchProperties() {
         `;
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Select the elements
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = menuBtn ? menuBtn.querySelector('i') : null;
+
+    // 2. Add Click Event
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            // Toggle the 'hidden' class to show/hide menu
+            mobileMenu.classList.toggle('hidden');
+            
+            // Switch Icon between Bars and X (Times)
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        // 3. Close menu when a link inside it is clicked
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    }
+});

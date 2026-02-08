@@ -46,7 +46,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-     /* Cinematic Darken */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); /* Cinematic Darken */
 }
 
 /* BRANDING GRADIENT TEXT */

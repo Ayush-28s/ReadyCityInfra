@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Ready City Infra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#005f99',
+                        'brand-dark': '#004a78',
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased min-h-screen bg-gray-900 relative overflow-x-hidden">
+
+    <!-- 1. BACKGROUND LAYER -->
+    <div class="fixed inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+             class="w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-dark/95 via-brand/85 to-black/70"></div>
+    </div>
+
+    <!-- 2. HUGE BACKGROUND TYPOGRAPHY -->
+    <div class="fixed inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
+        <h1 class="text-[15vw] font-[900] text-white/5 leading-none tracking-tighter uppercase transform -rotate-12 whitespace-nowrap blur-sm">
+            READY CITY
+        </h1>
+    </div>
+
+    <!-- 3. MAIN CONTENT LAYER -->
+    <div class="relative z-10 flex flex-col justify-center items-center min-h-screen py-10 px-4">
+        
+        <!-- GLASS CARD -->
+        <div class="w-full max-w-[450px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8 animate-fade-up">
+            
+            <!-- LOGO SECTION -->
+            <div class="flex flex-col items-center mb-6">
+                <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl mb-5 p-4 overflow-hidden ring-4 ring-white/10">
+                    <img src="images/logo.png" alt="Logo" class="w-full h-full object-contain">
+                </div>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Join Our Network</h2>
+                <p class="text-blue-100/80 text-xs mt-1">Create your partner account</p>
+            </div>
+
+            <!-- FORM -->
+            <form id="signupForm" class="space-y-4">
+                
+                <!-- Full Name -->
+                <div class="group">
+                    <label class="block text-blue-100 text-[10px] font-bold uppercase tracking-widest mb-1 ml-1 opacity-80">Full Name</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-id-card text-blue-200"></i>
+                        </div>
+                        <input type="text" placeholder="John Doe" 
+                            class="w-full bg-white/5 border border-white/20 text-white placeholder-blue-200/40 text-sm rounded-xl focus:bg-white/10 focus:ring-2 focus:ring-blue-400/50 block w-full pl-11 p-3 transition-all outline-none" required>
+                    </div>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="group">
+                    <label class="block text-blue-100 text-[10px] font-bold uppercase tracking-widest mb-1 ml-1 opacity-80">Mobile Number</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-phone text-blue-200"></i>
+                        </div>
+                        <input type="tel" placeholder="+91 98765 43210" 
+                            class="w-full bg-white/5 border border-white/20 text-white placeholder-blue-200/40 text-sm rounded-xl focus:bg-white/10 focus:ring-2 focus:ring-blue-400/50 block w-full pl-11 p-3 transition-all outline-none" required>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label class="block text-blue-100 text-[10px] font-bold uppercase tracking-widest mb-1 ml-1 opacity-80">Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-blue-200"></i>
+                        </div>
+                        <input type="password" id="pass1" placeholder="Create Password" 
+                            class="w-full bg-white/5 border border-white/20 text-white placeholder-blue-200/40 text-sm rounded-xl focus:bg-white/10 focus:ring-2 focus:ring-blue-400/50 block w-full pl-11 p-3 transition-all outline-none" required>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div>
+                    <label class="block text-blue-100 text-[10px] font-bold uppercase tracking-widest mb-1 ml-1 opacity-80">Confirm Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-check-circle text-blue-200"></i>
+                        </div>
+                        <input type="password" id="pass2" placeholder="Repeat Password" 
+                            class="w-full bg-white/5 border border-white/20 text-white placeholder-blue-200/40 text-sm rounded-xl focus:bg-white/10 focus:ring-2 focus:ring-blue-400/50 block w-full pl-11 p-3 transition-all outline-none" required>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 via-brand to-brand-dark hover:from-blue-400 hover:to-brand text-white font-bold py-3.5 rounded-xl shadow-lg shadow-brand/30 transform hover:-translate-y-0.5 transition-all duration-200 mt-2">
+                    Register Account
+                </button>
+
+            </form>
+
+            <!-- Back to Login -->
+            <div class="mt-6 text-center border-t border-white/10 pt-4">
+                <p class="text-blue-200/60 text-sm">
+                    Already have an account? 
+                    <a href="/login.html" class="text-white font-bold hover:text-blue-300 transition ml-1 underline decoration-blue-400/30 underline-offset-4">Sign In</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-white/30 text-xs mt-8 font-light">
+            &copy; 2024 Ready City Infra Pvt Ltd.
+        </p>
+    </div>
+
+    <!-- JAVASCRIPT VALIDATION -->
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const fullName = document.querySelector('input[placeholder="Your Name"]').value;
+            const phone = document.querySelector('input[type="tel"]').value;
+            const pass1 = document.getElementById('pass1').value;
+            const pass2 = document.getElementById('pass2').value;
+            const btn = this.querySelector('button');
+
+            // Validation
+            if (pass1 !== pass2) { alert("Passwords do not match!"); return; }
+
+            // Loading State
+            const originalText = btn.innerText;
+            btn.innerText = "Creating Account...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fullName, phone, password: pass1 })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Account created! Please Login.');
+                    window.location.href = '/login.html';
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (error) {
+                alert('Something went wrong. Please try again.');
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

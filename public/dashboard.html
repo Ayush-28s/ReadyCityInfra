@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Ready City Infra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-blue-800">Ready City Dashboard</h1>
+            <button onclick="logout()" class="text-red-500 font-bold hover:underline">Logout</button>
+        </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="container mx-auto p-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+            <h2 class="text-3xl font-bold mb-4">Welcome, <span id="username" class="text-blue-600">User</span>!</h2>
+            <p class="text-gray-600 text-lg">You are now logged into your secure partner portal.</p>
+            
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-blue-50 rounded-xl border border-blue-100">
+                    <i class="fas fa-file-contract text-3xl text-blue-500 mb-2"></i>
+                    <h3 class="font-bold">My Bookings</h3>
+                    <p class="text-sm text-gray-500">0 Active Bookings</p>
+                </div>
+                <div class="p-6 bg-green-50 rounded-xl border border-green-100">
+                    <i class="fas fa-wallet text-3xl text-green-500 mb-2"></i>
+                    <h3 class="font-bold">Payments</h3>
+                    <p class="text-sm text-gray-500">View History</p>
+                </div>
+                <div class="p-6 bg-purple-50 rounded-xl border border-purple-100">
+                    <i class="fas fa-user-cog text-3xl text-purple-500 mb-2"></i>
+                    <h3 class="font-bold">Profile</h3>
+                    <p class="text-sm text-gray-500">Edit Details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        const user = JSON.parse(localStorage.getItem('user'));
+        
+        if (!user) {
+            // Not logged in? Kick them back to login page
+            window.location.href = '/login.html';
+        } else {
+            document.getElementById('username').innerText = user.name;
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = '/login.html';
+        }
+    </script>
+</body>
+</html>
