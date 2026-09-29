@@ -7,8 +7,10 @@
     "build": "npx tailwindcss -i ./src/input.css -o ./public/styles.css --minify"
   },
   "dependencies": {
-    "mysql2": "^3.6.5",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^16.3.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.6.5",
     "tailwindcss": "^3.4.1"
   }
 }
