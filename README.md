@@ -128,7 +128,7 @@ npm start
 vercel dev
 ```
 
-Visit `http://localhost:3000` to interact with the application.
+Visit `https://readycity-iota.vercel.app/` to interact with the application.
 
 ---
 
@@ -143,7 +143,7 @@ Visit `http://localhost:3000` to interact with the application.
 
 ## 👤 Author & Maintainer
 
-**Prashant Singh**
+**Ayush Kumar Singh**
 * **Project**: Ready City Infra Pvt. Ltd.
-* **GitHub**: [@Prashant453](https://github.com/Prashant453)
+* **GitHub**: [@Ayush-28s](https://github.com/Ayush-28s)
 * **Organization**: Ready City Infra Pvt. Ltd.
